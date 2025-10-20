@@ -89,20 +89,15 @@ def restart():
 
 root = Tk()
 root.title("Êðåñòèêè-íîëèêè")
-
 main = Frame(root)
 main.pack(padx=10,pady=10)
-
 canvas = Canvas(main, width=WIDTH, height=HEIGHT)
 canvas.pack(side=LEFT, padx=10)
 canvas.bind("<ButtonPress-1>", click)
-
 info = Frame(main)
 info.pack(side=RIGHT, fill=X)
-
 label = Label(info, text="Èãðà ïðîòèâ êîìïüþòåðà")
 label.pack(side=TOP, pady=10)
-
 btn = Button(info, text="Íà÷àòü èãðó çàíîâî", command=restart)
 btn.pack(pady=8,fill=X)
 draw_field()
