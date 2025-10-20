@@ -28,20 +28,20 @@ def draw_field():
 
 
 def ai():
-    for l in lines:# победный ход
+    for l in lines:
         win_check = [board[i] for i in l]
         if win_check.count("O") == 2 and win_check.count(None) == 1:
             return l[win_check.index(None)]
-    for l in lines:#блокировка игрока
+    for l in lines:
         win_check = [board[i] for i in l]
         if win_check.count("X") == 2 and win_check.count(None) == 1:
             return l[win_check.index(None)]
-    if board[4] is None:#центр
+    if board[4] is None:
         return 4
-    for corner in [0, 2, 6, 8]:#углы
+    for corner in [0, 2, 6, 8]:
         if board[corner] is None:
             return corner
-    for i in range(9):# все стороны
+    for i in range(9):
         if board[i] is None:
             return i
     return -1
@@ -72,11 +72,11 @@ def draw_move(pos):
             if l in [[0,3,6],[1,4,7],[2,5,8]]:
                 canvas.create_line(l[0] % 3 * CELL + CELL // 2, 0, l[0] % 3 * CELL + CELL // 2, CELL * 3, width=2)
 
-            root.after(100, lambda: messagebox.showinfo("Игра окончена", f"Победил {"X" if curr_pl == "O" else "O" }"))
+            root.after(100, lambda: messagebox.showinfo("Г€ГЈГ°Г  Г®ГЄГ®Г­Г·ГҐГ­Г ", f"ГЏГ®ГЎГҐГ¤ГЁГ« {"X" if curr_pl == "O" else "O" }"))
             game_over = True
 
     if not game_over and None not in board:
-        root.after(100, lambda: messagebox.showinfo("Игра окончена", "Ничья!"))
+        root.after(100, lambda: messagebox.showinfo("Г€ГЈГ°Г  Г®ГЄГ®Г­Г·ГҐГ­Г ", "ГЌГЁГ·ГјГї!"))
         game_over = True
 
 
@@ -88,7 +88,7 @@ def restart():
     draw_field()
 
 root = Tk()
-root.title("Крестики-нолики")
+root.title("ГЉГ°ГҐГ±ГІГЁГЄГЁ-Г­Г®Г«ГЁГЄГЁ")
 
 main = Frame(root)
 main.pack(padx=10,pady=10)
@@ -100,10 +100,10 @@ canvas.bind("<ButtonPress-1>", click)
 info = Frame(main)
 info.pack(side=RIGHT, fill=X)
 
-label = Label(info, text="Игра против компьютера")
+label = Label(info, text="Г€ГЈГ°Г  ГЇГ°Г®ГІГЁГў ГЄГ®Г¬ГЇГјГѕГІГҐГ°Г ")
 label.pack(side=TOP, pady=10)
 
-btn = Button(info, text="Начать игру заново", command=restart)
+btn = Button(info, text="ГЌГ Г·Г ГІГј ГЁГЈГ°Гі Г§Г Г­Г®ГўГ®", command=restart)
 btn.pack(pady=8,fill=X)
 draw_field()
 
